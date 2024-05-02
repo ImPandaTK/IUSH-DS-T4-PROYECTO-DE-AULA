@@ -173,7 +173,6 @@
             txtCedula.Name = "txtCedula";
             txtCedula.Size = new Size(119, 20);
             txtCedula.TabIndex = 52;
-            txtCedula.Text = "Cédula";
             // 
             // label8
             // 
