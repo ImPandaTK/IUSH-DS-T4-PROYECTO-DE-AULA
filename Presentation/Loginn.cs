@@ -96,22 +96,11 @@ namespace Presentation
                     var validLogin = user.LoginUser(txtuser.Text, txtpass.Text);
                     if (validLogin == true)
                     {
-                        if (UserLoginCache.Position == Positions.Administrator || UserLoginCache.Position == Positions.usuario)
-                        {
-                            FormPrincipal mainMenu = new FormPrincipal();
-                            MessageBox.Show("Bienvenido " + UserLoginCache.FirstName + ", " + UserLoginCache.LastName);
-                            mainMenu.Show();
-                            mainMenu.FormClosed += Logout;
-                            this.Hide();
-                        }
-                        if (UserLoginCache.Position == Positions.secretaria)
-                        {
-                            FormSecretaria fs = new FormSecretaria();
-                            MessageBox.Show("Bienvenido " + UserLoginCache.FirstName + ", " + UserLoginCache.LastName);
-                            fs.Show();
-                            fs.FormClosed += Logout;
-                            this.Hide();
-                        }
+                        FormPrincipal mainMenu = new FormPrincipal();
+                        MessageBox.Show("Bienvenido " + UserLoginCache.FirstName + ", " + UserLoginCache.LastName);
+                        mainMenu.Show();
+                        mainMenu.FormClosed += Logout;
+                        this.Hide();
                     }
                     else
                     {

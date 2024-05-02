@@ -10,7 +10,6 @@ namespace Soporte.Cache
     {
         public const string Administrator = "Administrator";
         public const string usuario = "usuario";
-        public const string secretaria = "secretaria";
 
     } 
 
