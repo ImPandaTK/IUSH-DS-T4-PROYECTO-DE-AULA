@@ -13,20 +13,21 @@ using Soporte.Cache;
 using Presentation;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using System.Data.SqlClient;
+using System.Xml.Linq;
 
 namespace Presentacion
 {
     public partial class FormPrincipal : Form
     {
+        private Transferencia transferenciaForm;
 
 
         int segundosTranscurridos = 0;
         public FormPrincipal()
         {
             InitializeComponent();
-            Timer2.Tick += Timer2_Tick;
-            Timer2.Interval = 100;
-            Timer2.Start();
+            GlobalTimer.Tick += GlobalTimer_TimerTick;
+
 
         }
 
@@ -253,14 +254,12 @@ namespace Presentacion
             }
         }
 
-
-        private void Timer2_Tick(object sender, EventArgs e)
+        private void GlobalTimer_TimerTick(object sender, EventArgs e)
         {
             segundosTranscurridos++;
-            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
-            if (segundosTranscurridos % 300 == 0)
+            lblHora.Text = DateTime.Now.ToString("hh:mm:ss tt");
+            if (segundosTranscurridos % 5 == 0)
             {
-
                 while (true)
                 {
 
@@ -271,15 +270,13 @@ namespace Presentacion
                         break;
                     }
 
-                    lstVisualizar.Items.Remove($"De: {elemento.Item1}");
-                    lstVisualizar.Items.Remove($"Para: {elemento.Item2}");
-                    lstVisualizar.Items.Remove($"Monto: {elemento.Item3:c0}");
-                    lstVisualizar.Items.Remove($"\n");
+                    lstVisualizar.Items.Add($"De: {elemento.Item1}");
+                    lstVisualizar.Items.Add($"Para: {elemento.Item2}");
+                    lstVisualizar.Items.Add($"Monto: {elemento.Item3:c0}");
+                    lstVisualizar.Items.Add($"\n");
 
-                    //lstVisualizar.Items.Clear();
                 }
-               // MessageBox.Show("Se proceso las transeciones", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Se proceso las transeciones", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

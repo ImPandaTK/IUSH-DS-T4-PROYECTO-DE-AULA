@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             panelContenedor = new Panel();
             panelformularios = new Panel();
@@ -55,7 +54,6 @@
             panelBarraTitulo = new Panel();
             btnRestaurar = new PictureBox();
             btnCerrar = new PictureBox();
-            Timer2 = new System.Windows.Forms.Timer(components);
             panelContenedor.SuspendLayout();
             panelformularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -418,10 +416,6 @@
             btnCerrar.TabStop = false;
             btnCerrar.Click += btnCerrar_Click;
             // 
-            // Timer2
-            // 
-            Timer2.Tick += Timer2_Tick;
-            // 
             // FormPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -475,7 +469,6 @@
         private Button btnExit;
         private Button btnServicios;
         private Button btnEnvia;
-        private System.Windows.Forms.Timer Timer2;
         private Label lblHora;
         private ListBox lstVisualizar;
         private Label lblCola;

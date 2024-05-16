@@ -20,7 +20,7 @@ namespace ModernGUI_V3
     {
 
         private string cadenaConexion = "Server=BYPANDAPT;DataBase= bank; integrated security= true";
-        
+
         public Transferencia()
         {
             InitializeComponent();
@@ -95,7 +95,8 @@ namespace ModernGUI_V3
                 MessageBox.Show("Transferencia realizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //Encolar
                 ColaManager.Encolar((usuarioOrigen, usuarioDestino, montoTransferencia));
-                //Mostrar Datossss
+                GlobalTimer.Start(5000);
+                //Mostrar Datos
                 ActualizarListBox(true);
 
                 textBox1.Text = string.Empty;
