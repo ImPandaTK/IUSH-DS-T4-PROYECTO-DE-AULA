@@ -14,6 +14,7 @@ using Presentation;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using System.Data.SqlClient;
 using System.Xml.Linq;
+using Google.Protobuf.WellKnownTypes;
 
 namespace Presentacion
 {
@@ -40,6 +41,8 @@ namespace Presentacion
             }
             MostrarSaldo();
             txtsaldo.ReadOnly = true;
+
+
         }
         private void MostrarSaldo()
         {
@@ -258,27 +261,34 @@ namespace Presentacion
         {
             segundosTranscurridos++;
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss tt");
-            if (segundosTranscurridos % 5 == 0)
+            if (ColaManager.transferencias.Count == 3)
             {
-                while (true)
+                if (segundosTranscurridos % 3 == 0)
                 {
-
-                    // Desencolar los elementos de la cola
-                    var elemento = ColaManager.Desencolar();
-                    if (elemento == (null, null, 0))
+                    while (true)
                     {
-                        break;
-                    }
+                        // Desencolar los elementos de la cola
+                        var elemento = ColaManager.Desencolar();
+                        if (elemento == (null, null, 0))
+                        {
+                            break;
+                        }
 
-                    lstVisualizar.Items.Add($"De: {elemento.Item1}");
-                    lstVisualizar.Items.Add($"Para: {elemento.Item2}");
-                    lstVisualizar.Items.Add($"Monto: {elemento.Item3:c0}");
-                    lstVisualizar.Items.Add($"\n");
+                        lstVisualizar.Items.Add($"De: {elemento.Item1}");
+                        lstVisualizar.Items.Add($"Para: {elemento.Item2}");
+                        lstVisualizar.Items.Add($"Monto: {elemento.Item3:c0}");
+                        lstVisualizar.Items.Add($"\n");
+
+                    }
+                    MessageBox.Show("Se proceso las transeciones", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lstVisualizar.Items.Clear();
 
                 }
-                MessageBox.Show("Se proceso las transeciones", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
             }
         }
+
     }
 
 }

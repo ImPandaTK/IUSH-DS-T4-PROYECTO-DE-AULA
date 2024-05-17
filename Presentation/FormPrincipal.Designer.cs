@@ -470,8 +470,8 @@
         private Button btnServicios;
         private Button btnEnvia;
         private Label lblHora;
-        private ListBox lstVisualizar;
         private Label lblCola;
+        public ListBox lstVisualizar;
     }
 }
 
