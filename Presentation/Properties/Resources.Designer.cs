@@ -73,6 +73,16 @@ namespace Presentation.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arbol {
+            get {
+                object obj = ResourceManager.GetObject("arbol", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Big_Sale {
             get {
                 object obj = ResourceManager.GetObject("Big_Sale", resourceCulture);
@@ -166,6 +176,16 @@ namespace Presentation.Properties {
         internal static System.Drawing.Bitmap fotoAdmin {
             get {
                 object obj = ResourceManager.GetObject("fotoAdmin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap grafico_de_linea {
+            get {
+                object obj = ResourceManager.GetObject("grafico-de-linea", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

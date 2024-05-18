@@ -22,14 +22,13 @@ namespace Presentacion
     {
         private Transferencia transferenciaForm;
 
+        private ArbolBinario arbolTransferencias;
 
         int segundosTranscurridos = 0;
         public FormPrincipal()
         {
             InitializeComponent();
             GlobalTimer.Tick += GlobalTimer_TimerTick;
-
-
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -41,6 +40,7 @@ namespace Presentacion
             }
             MostrarSaldo();
             txtsaldo.ReadOnly = true;
+            arbolTransferencias = new ArbolBinario(UserLoginCache.LoginName);
 
 
         }
@@ -261,34 +261,41 @@ namespace Presentacion
         {
             segundosTranscurridos++;
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss tt");
-            if (ColaManager.transferencias.Count == 3)
+
+            if (segundosTranscurridos % 5 == 0 && ColaManager.HayTransferencias())
             {
-                if (segundosTranscurridos % 3 == 0)
+                while (ColaManager.HayTransferencias())
                 {
-                    while (true)
+                    // Desencolar los elementos de la cola
+                    var transferencia = ColaManager.Desencolar();
+                    if (transferencia == (null, null, 0))
                     {
-                        // Desencolar los elementos de la cola
-                        var elemento = ColaManager.Desencolar();
-                        if (elemento == (null, null, 0))
-                        {
-                            break;
-                        }
-
-                        lstVisualizar.Items.Add($"De: {elemento.Item1}");
-                        lstVisualizar.Items.Add($"Para: {elemento.Item2}");
-                        lstVisualizar.Items.Add($"Monto: {elemento.Item3:c0}");
-                        lstVisualizar.Items.Add($"\n");
-
+                        break;
                     }
-                    MessageBox.Show("Se proceso las transeciones", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    lstVisualizar.Items.Clear();
+
+                    arbolTransferencias.InsertarTransferencia(transferencia.Item2);
+                    lstVisualizar.Items.Add($"De: {transferencia.Item1}");
+                    lstVisualizar.Items.Add($"Para: {transferencia.Item2}");
+                    lstVisualizar.Items.Add($"Monto: {transferencia.Item3:c0}");
+                    lstVisualizar.Items.Add($"\n");
 
                 }
-
+                MessageBox.Show("Se proceso las transeciones", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lstVisualizar.Items.Clear();
 
             }
+
+
+
         }
 
+        private void btnGrafo_Click(object sender, EventArgs e)
+        {
+
+            AbrirFormulario<ArbolBi>();
+            
+
+        }
     }
 
 }

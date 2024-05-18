@@ -54,6 +54,7 @@
             panelBarraTitulo = new Panel();
             btnRestaurar = new PictureBox();
             btnCerrar = new PictureBox();
+            btnGrafo = new Button();
             panelContenedor.SuspendLayout();
             panelformularios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -178,6 +179,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.Black;
+            panelMenu.Controls.Add(btnGrafo);
             panelMenu.Controls.Add(btnEditar);
             panelMenu.Controls.Add(panelUser);
             panelMenu.Controls.Add(btnExit);
@@ -200,10 +202,10 @@
             btnEditar.ForeColor = Color.White;
             btnEditar.Image = (Image)resources.GetObject("btnEditar.Image");
             btnEditar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEditar.Location = new Point(2, 357);
+            btnEditar.Location = new Point(12, 329);
             btnEditar.Margin = new Padding(2);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(192, 87);
+            btnEditar.Size = new Size(195, 75);
             btnEditar.TabIndex = 4;
             btnEditar.Text = "EDITAR";
             btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -325,10 +327,10 @@
             btnExit.ForeColor = Color.White;
             btnExit.Image = (Image)resources.GetObject("btnExit.Image");
             btnExit.ImageAlign = ContentAlignment.MiddleLeft;
-            btnExit.Location = new Point(12, 487);
+            btnExit.Location = new Point(11, 487);
             btnExit.Margin = new Padding(2);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(195, 83);
+            btnExit.Size = new Size(184, 83);
             btnExit.TabIndex = 2;
             btnExit.Text = "SALIDA";
             btnExit.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -345,10 +347,10 @@
             btnServicios.ForeColor = Color.White;
             btnServicios.Image = (Image)resources.GetObject("btnServicios.Image");
             btnServicios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnServicios.Location = new Point(2, 266);
+            btnServicios.Location = new Point(12, 255);
             btnServicios.Margin = new Padding(2);
             btnServicios.Name = "btnServicios";
-            btnServicios.Size = new Size(192, 87);
+            btnServicios.Size = new Size(195, 70);
             btnServicios.TabIndex = 1;
             btnServicios.Text = "SERVICIOS";
             btnServicios.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -365,10 +367,10 @@
             btnEnvia.ForeColor = Color.White;
             btnEnvia.Image = (Image)resources.GetObject("btnEnvia.Image");
             btnEnvia.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEnvia.Location = new Point(2, 179);
+            btnEnvia.Location = new Point(12, 179);
             btnEnvia.Margin = new Padding(2);
             btnEnvia.Name = "btnEnvia";
-            btnEnvia.Size = new Size(195, 83);
+            btnEnvia.Size = new Size(195, 72);
             btnEnvia.TabIndex = 0;
             btnEnvia.Text = "METIENDING\r\nMONEY\r\n";
             btnEnvia.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -415,6 +417,26 @@
             btnCerrar.TabIndex = 0;
             btnCerrar.TabStop = false;
             btnCerrar.Click += btnCerrar_Click;
+            // 
+            // btnGrafo
+            // 
+            btnGrafo.FlatAppearance.BorderSize = 0;
+            btnGrafo.FlatAppearance.MouseDownBackColor = Color.FromArgb(28, 28, 28);
+            btnGrafo.FlatAppearance.MouseOverBackColor = Color.FromArgb(64, 64, 64);
+            btnGrafo.FlatStyle = FlatStyle.Flat;
+            btnGrafo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGrafo.ForeColor = Color.White;
+            btnGrafo.Image = Presentation.Properties.Resources.grafico_de_linea;
+            btnGrafo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnGrafo.Location = new Point(12, 408);
+            btnGrafo.Margin = new Padding(2);
+            btnGrafo.Name = "btnGrafo";
+            btnGrafo.Size = new Size(183, 75);
+            btnGrafo.TabIndex = 5;
+            btnGrafo.Text = "ARBOL";
+            btnGrafo.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGrafo.UseVisualStyleBackColor = true;
+            btnGrafo.Click += btnGrafo_Click;
             // 
             // FormPrincipal
             // 
@@ -472,6 +494,7 @@
         private Label lblHora;
         private Label lblCola;
         public ListBox lstVisualizar;
+        private Button btnGrafo;
     }
 }
 

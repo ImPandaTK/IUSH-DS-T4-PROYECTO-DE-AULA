@@ -25,5 +25,10 @@ namespace Presentation
                 return (null,null,0); 
             }
         }
+
+        public static bool HayTransferencias()
+        {
+            return transferencias.Count > 0;
+        }
     }
 }

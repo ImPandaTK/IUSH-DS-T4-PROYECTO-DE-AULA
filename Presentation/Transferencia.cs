@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Presentacion;
 using Presentation;
 using Soporte.Cache;
@@ -18,7 +19,7 @@ namespace ModernGUI_V3
 {
     public partial class Transferencia : Form
     {
-
+        
         private string cadenaConexion = "Server=BYPANDAPT;DataBase= bank; integrated security= true";
 
         private FormPrincipal formPrincipal;
@@ -99,12 +100,19 @@ namespace ModernGUI_V3
             }
             if (RealizarTransferencia(usuarioOrigen, usuarioDestino, montoTransferencia) == true)
             {
+
+                
                 MessageBox.Show("Transferencia realizada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+               
+
                 //Encolar
                 ColaManager.Encolar((usuarioOrigen, usuarioDestino, montoTransferencia));
-                GlobalTimer.Start(3000);
+                GlobalTimer.Start(5000);
                 //Mostrar Datos
                 ActualizarListBox(true);
+
+               
 
                 textBox1.Text = string.Empty;
                 txtMonto.Text = string.Empty;
