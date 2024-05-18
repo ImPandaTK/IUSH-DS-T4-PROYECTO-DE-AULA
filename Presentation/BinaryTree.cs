@@ -16,7 +16,7 @@ namespace Presentation
         }
 
 
-
+        //Orden de Maginutud:  O(log n) [Si esta balanceado]: Logarítmico: O(n) [Si no esta balanceado]: Lineal
         public void AddOrUpdateNode(string userName, decimal amountTransferred)
         {
             if (Root == null)
@@ -28,6 +28,7 @@ namespace Presentation
             AddOrUpdateNodeRecursive(Root, userName, amountTransferred);
         }
 
+        //Orden de Maginutud: O(n) [Si esta desbalanceado]: Lineal: O(log n) [Si esta balanceado]: Logarítmico
         private void AddOrUpdateNodeRecursive(BinaryTreeNode parentNode, string userName, decimal amountTransferred)
         {
             if (parentNode.UserName == userName)

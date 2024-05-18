@@ -33,8 +33,11 @@ namespace ModernGUI_V3
         {
             InitializeComponent();
         }
+
+        //Orden de Maginutud: O(1): constante
         private bool UsuarioExiste(string nombreUsuario)
         {
+            
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -46,8 +49,11 @@ namespace ModernGUI_V3
                 }
             }
         }
+
+        //Orden de Maginutud: O(1): constante
         private bool RealizarTransferencia(string usuarioOrigen, string usuarioDestino, int monto)
         {
+            
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -81,6 +87,8 @@ namespace ModernGUI_V3
         {
             lblEnvia.Text = UserLoginCache.LoginName;
         }
+
+        //Orden de Maginutud: O(1): constante
         private void btnEnviar_Click_1(object sender, EventArgs e)
         {
             int montoTransferencia;
@@ -124,11 +132,14 @@ namespace ModernGUI_V3
                 MessageBox.Show("Error al realizar la transferencia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Orden de Maginutud: O(n): Lineal:  n= número de elementos.
         private void ActualizarListBox(bool agregar)
         {
             lstVisualizarT.Items.Clear();
             if (agregar)
             {
+                //Orden de Maginutud: O(1): constante
                 foreach (var item in ColaManager.transferencias)
                 {
                     lstVisualizarT.Items.Add($"De: {item.Item1}");

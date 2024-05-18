@@ -31,6 +31,7 @@ namespace Presentacion
             GlobalTimer.Tick += GlobalTimer_TimerTick;
         }
 
+        //Orden de Maginutud: O(1): constante
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
             LoadUsersData();
@@ -42,8 +43,9 @@ namespace Presentacion
             txtsaldo.ReadOnly = true;
             arbolTransferencias = new ArbolBinario(UserLoginCache.LoginName);
 
-
         }
+
+        //Orden de Maginutud: O(log n): Logarítmica: n = Número de registros
         private void MostrarSaldo()
         {
             using (SqlConnection connection = new SqlConnection("Server=BYPANDAPT;DataBase= bank; integrated security= true"))
@@ -72,6 +74,8 @@ namespace Presentacion
             }
 
         }
+
+        //Orden de Maginutud: O(1): constante
         private void LoadUsersData()
         {
             // pictureBox1.Image = Image.FromFile(@"C:\Users\iambr\OneDrive\Escritorio\Universidad\AnalisisDiseño\Img\pingui.gif");
@@ -83,6 +87,8 @@ namespace Presentacion
             lblCodigo.Text = UserLoginCache.Cedula;
             //lblSaldo.Text = UserLoginCache.Saldos;
         }
+
+        //Orden de Maginutud: O(n): Lineal: 
         #region Funcionalidades del formulario
         private int tolerance = 12;
         private const int WM_NCHITTEST = 132;
@@ -237,6 +243,8 @@ namespace Presentacion
                 return ms.ToArray();
             }
         }
+
+        //Orden de Maginutud: O(1): constante
         private void GuardarImagenEnBD(string nombre, byte[] datosImagen)
         {
 
@@ -257,6 +265,7 @@ namespace Presentacion
             }
         }
 
+        //Orden de Maginutud: O(1): constante: Sin embargo: O(n): n= transferencias pendientes en la cola.
         private void GlobalTimer_TimerTick(object sender, EventArgs e)
         {
             segundosTranscurridos++;

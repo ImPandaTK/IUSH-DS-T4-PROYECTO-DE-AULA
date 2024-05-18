@@ -10,10 +10,13 @@ namespace Presentation
     {
         public static Queue<(string, string, int)> transferencias = new Queue<(string, string, int)>();
 
+        //Orden de Maginutud: O(1): constante
         public static void Encolar((string , string , int) elemento)
         {
             transferencias.Enqueue(elemento);
         }
+
+        //Orden de Maginutud: O(1): constante
         public static (string,string, int) Desencolar()
         {
             if (transferencias.Count > 0)
@@ -26,6 +29,7 @@ namespace Presentation
             }
         }
 
+        //Orden de Maginutud: O(1): constante
         public static bool HayTransferencias()
         {
             return transferencias.Count > 0;

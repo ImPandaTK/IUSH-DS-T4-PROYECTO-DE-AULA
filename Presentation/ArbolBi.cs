@@ -31,6 +31,8 @@ namespace Presentation
             binaryTree.AddOrUpdateNode(userName, amountTransferred);
             panelTree.Invalidate();
         }
+
+        //Orden de Maginutud: O(log n): Logarítmica:  Este método depende de "DrawNode"
         private void panelTree_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -41,6 +43,7 @@ namespace Presentation
             }
         }
 
+        //Orden de Maginutud: O(log n): Logarítmica:  n= número de nodos en el árbol
         private void DrawNode(Graphics g, BinaryTreeNode node, int x, int y, int horizontalOffset)
         {
             if (node == null)
